@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState } from "react";
 import ResumeForm from "./components/ResumeForm";
+import ResumePreview from "./components/ResumePreview";
 
 function App() {
   const [formData, setFormData] = useState({
@@ -32,7 +33,7 @@ function App() {
           </div>
 
           <div className="col-md-6">
-            ResumePreview  
+            <ResumePreview formData={formData} /> 
 
             <button
               className="btn btn-primary mt-3"
