@@ -1,7 +1,19 @@
 import './App.css';
 import React, { useState } from "react";
+import ResumeForm from "./components/ResumeForm";
 
 function App() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    education: "",
+    skills: "",
+    experience: "",
+    photo: ""
+  });
+
+
   return (
     <div className="App">
       <div className="container mt-4">
@@ -13,9 +25,10 @@ function App() {
         <div className="row">
 
           <div className="col-md-6">
-            ResumeForm
-              
-            
+            <ResumeForm
+              formData={formData}
+              setFormData={setFormData}
+            />
           </div>
 
           <div className="col-md-6">
