@@ -84,8 +84,12 @@ h2{
   color: #656565;
   margin: -5px 0 10px 0;
   transition: all 0.3s ease;
-  border-bottom: 3px solid #328bde;
   padding-bottom: 10px;
+}
+
+hr {
+  color: #000;
+  font-weight: 700;
 }
 
 #resume h4 {
