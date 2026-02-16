@@ -28,8 +28,8 @@ h2{
   background-color: #db72e4;
   color: white;
   padding: 10px 20px;
-  border: none;
-  border-radius: 10px;
+  border: 2px solid rgb(223, 223, 223);
+  border-radius: 12px;
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;
@@ -49,5 +49,92 @@ h2{
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
+/* Resume Preview Styles */
+#resume {
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  position: relative;
+  overflow: hidden;
+}
 
+#resume:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  transform: translateY(-4px);
+}
+
+/* Resume Photo Styles */
+#resume img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(219, 114, 228, 0.3);
+  filter: brightness(1.1);
+}
+
+/* Resume Headings */
+#resume h3 {
+  font-size: 28px;
+  color: #333;
+  margin: 10px 0;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid #328bde;
+  padding-bottom: 10px;
+}
+
+#resume h4 {
+  font-size: 18px;
+  color: #328bde;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+  border-left: 4px solid #328bde;
+  padding-left: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#resume h4:hover {
+  color: #32c1de;
+  transform: translateX(5px);
+}
+
+/* Resume Paragraphs */
+#resume p {
+  color: #555555;
+  line-height: 1.6;
+  margin: 8px 0;
+  transition: all 0.3s ease;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+#resume p:hover {
+  background-color: rgba(117, 215, 239, 0.1);
+  color: #333;
+  padding-left: 12px;
+}
+
+/* Animation for resume fade in */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Resume sections animation */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
