@@ -25,8 +25,12 @@ function ResumePreview({ formData }) {
       )}
 
       <h3>{formData.name}</h3>
+        <h5>{formData.position}</h5>
       <p>Email: {formData.email}</p>
       <p>Phone: {formData.phone}</p>
+
+      <h4>Profile</h4>
+      <p>{formData.profile}</p>
 
       <h4>Education</h4>
       <p>{formData.education}</p>
@@ -37,6 +41,11 @@ function ResumePreview({ formData }) {
       <h4>Experience</h4>
       <p>{formData.experience}</p>
 
+      <h4>Projects</h4>
+      <p>{formData.projects}</p>
+
+      <h4>Certifications</h4>
+      <p>{formData.certifications}</p>
     </div>
   );
 }

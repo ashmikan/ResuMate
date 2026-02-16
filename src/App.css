@@ -77,6 +77,13 @@ h2{
   color: #333;
   margin: 10px 0;
   transition: all 0.3s ease;
+}
+
+#resume h5 {
+  font-size: 24px;
+  color: #656565;
+  margin: -5px 0 10px 0;
+  transition: all 0.3s ease;
   border-bottom: 3px solid #328bde;
   padding-bottom: 10px;
 }

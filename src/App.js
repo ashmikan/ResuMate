@@ -8,11 +8,15 @@ import jsPDF from "jspdf";
 function App() {
   const [formData, setFormData] = useState({
     name: "",
+    position: "",
     email: "",
     phone: "",
+    profile: "",
     education: "",
     skills: "",
     experience: "",
+    projects: "",
+    certifications: "",
     photo: ""
   });
 

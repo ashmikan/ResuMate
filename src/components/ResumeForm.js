@@ -39,6 +39,13 @@ function ResumeForm({ formData, setFormData }) {
 
       <input
         className="form-control mb-2"
+        name="position"
+        placeholder="Job Position"
+        onChange={handleChange}
+      />
+
+      <input
+        className="form-control mb-2"
         name="email"
         placeholder="Email"
         onChange={handleChange}
@@ -48,6 +55,13 @@ function ResumeForm({ formData, setFormData }) {
         className="form-control mb-2"
         name="phone"
         placeholder="Phone"
+        onChange={handleChange}
+      />
+
+      <textarea
+        className="form-control mb-2"
+        name="profile"
+        placeholder="Profile"
         onChange={handleChange}
       />
 
@@ -69,6 +83,20 @@ function ResumeForm({ formData, setFormData }) {
         className="form-control mb-2"
         name="experience"
         placeholder="Experience"
+        onChange={handleChange}
+      />
+
+      <textarea
+        className="form-control mb-2"
+        name="projects"
+        placeholder="Projects"
+        onChange={handleChange}
+      />
+
+      <textarea
+        className="form-control mb-2"
+        name="certifications"
+        placeholder="Certifications"
         onChange={handleChange}
       />
 
