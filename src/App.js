@@ -40,6 +40,20 @@ function App() {
 
   return (
     <div className="App">
+      {/* Floating Background Bubbles */}
+      <div className="bubbles">
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+      </div>
+
       <div className="container mt-4">
 
         <h1 className="text-center mb-4">
