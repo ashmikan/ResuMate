@@ -39,8 +39,9 @@ function App() {
       <div className="container mt-4">
 
         <h1 className="text-center mb-4">
-          Online Resume Builder
+          ResuMate
         </h1>
+        <h2 className="tag text-center mb-4" >Online Resume Builder</h2>
 
         <div className="row">
 
@@ -55,7 +56,7 @@ function App() {
             <ResumePreview formData={formData} /> 
 
             <button
-              className="btn btn-primary mt-3"
+              className="btn-custom"
               onClick={downloadPDF}
       
             >

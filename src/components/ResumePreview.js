@@ -24,7 +24,7 @@ function ResumePreview({ formData }) {
         />
       )}
 
-      <h2>{formData.name}</h2>
+      <h3>{formData.name}</h3>
       <p>Email: {formData.email}</p>
       <p>Phone: {formData.phone}</p>
 
