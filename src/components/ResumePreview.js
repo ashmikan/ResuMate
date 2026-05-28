@@ -1,104 +1,226 @@
-import React, { useState } from "react";
+import React from "react";
 
-function ResumePreview({ formData }) {
-  const [hoveredSection, setHoveredSection] = useState(null);
+function ResumePreview({ formData, selectedTemplate = "sidebar", accentColor = "#0284c7" }) {
+  
+  // Custom styles to pass the chosen accent color down to CSS variables
+  const containerStyle = {
+    "--accent-color": accentColor,
+    position: "relative"
+  };
 
-  const sectionStyle = (sectionName) => ({
-    transition: "all 0.3s ease",
-    padding: "10px",
-    borderRadius: "6px",
-    background: hoveredSection === sectionName ? "rgba(1, 56, 128, 0.05)" : "transparent"
-  });
+  // Helper to render section with formatted text
+  const renderSection = (title, content, templateType) => {
+    if (!content) return null;
 
-  return (
-    <div
-      id="resume"
-      style={{
-        padding: "20px",
-        background: "white",
-        width: "600px",
-        borderRadius: "12px",
-        boxShadow: "0 8px 24px rgba(0, 0, 0, 0.15)",
-        transition: "all 0.3s ease"
-      }}
-    >
-      {/* Header Section: Image + Name/Position in 2 columns */}
-      <div style={{ display: "flex", gap: "20px", alignItems: "center", marginBottom: "20px" }}>
-        {/* Column 1: Image */}
-        <div style={{ transition: "all 0.3s ease" }}>
+    if (templateType === "sidebar") {
+      return (
+        <div className="main-section">
+          <h4>{title}</h4>
+          <p style={{ whiteSpace: "pre-line" }}>{content}</p>
+        </div>
+      );
+    } else if (templateType === "minimal") {
+      return (
+        <div className="section">
+          <h4>{title}</h4>
+          <p style={{ whiteSpace: "pre-line" }}>{content}</p>
+        </div>
+      );
+    } else if (templateType === "creative") {
+      return (
+        <div className="section">
+          <h4>{title}</h4>
+          <p style={{ whiteSpace: "pre-line" }}>{content}</p>
+        </div>
+      );
+    } else { // executive
+      return (
+        <div className="section">
+          <h4>{title}</h4>
+          <p style={{ whiteSpace: "pre-line" }}>{content}</p>
+        </div>
+      );
+    }
+  };
+
+  // 1. Template: Modern Sidebar
+  const renderSidebarTemplate = () => {
+    return (
+      <div className="template-modern-sidebar" style={containerStyle}>
+        {/* Left Sidebar */}
+        <div className="sidebar">
           {formData.photo && (
-            <img
-              src={formData.photo}
-              alt="profile"
-              style={{
-                width: "120px",
-                height: "120px",
-                borderRadius: "50%",
-                objectFit: "cover",
-                boxShadow: "0 4px 12px rgba(219, 114, 228, 0.2)",
-                transition: "all 0.3s ease",
-                cursor: "pointer"
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.transform = "scale(1.08)";
-                e.target.style.boxShadow = "0 8px 16px rgba(219, 114, 228, 0.4)";
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.transform = "scale(1)";
-                e.target.style.boxShadow = "0 4px 12px rgba(219, 114, 228, 0.2)";
-              }}
-            />
+            <img src={formData.photo} alt="Profile" className="sidebar-photo" />
+          )}
+
+          <div className="sidebar-section">
+            <h4>Contact Info</h4>
+            {formData.email && <p>📧 {formData.email}</p>}
+            {formData.phone && <p>📱 {formData.phone}</p>}
+          </div>
+
+          {formData.skills && (
+            <div className="sidebar-section">
+              <h4>Skills</h4>
+              {formData.skills.split(",").map((s, idx) => s.trim() && (
+                <p key={idx} style={{ fontSize: "0.8rem", margin: "4px 0" }}>
+                  • {s.trim()}
+                </p>
+              ))}
+            </div>
           )}
         </div>
 
-        {/* Column 2: Name & Position */}
-        <div>
-          <h3 style={{ margin: "0 0 5px 0", transition: "all 0.3s ease", color: "#333" }}>{formData.name}</h3>
-          <h5 style={{ margin: "0", transition: "all 0.3s ease", color: "#013880ff" }}>{formData.position}</h5>
+        {/* Right Main Content */}
+        <div className="main-content">
+          <div className="header-info">
+            <h3>{formData.name || "Your Name"}</h3>
+            <h5>{formData.position || "Your Job Title"}</h5>
+          </div>
+
+          {renderSection("Profile", formData.profile, "sidebar")}
+          {renderSection("Education", formData.education, "sidebar")}
+          {renderSection("Experience", formData.experience, "sidebar")}
+          {renderSection("Projects", formData.projects, "sidebar")}
+          {renderSection("Certifications", formData.certifications, "sidebar")}
         </div>
       </div>
+    );
+  };
 
-      <hr style={{ border: "none", borderTop: "3px solid #013880ff", margin: "20px 0", transition: "all 0.3s ease" }}></hr>
-      
-      {/* Contact Info Section */}
-      <div
-        style={sectionStyle("contact")}
-        onMouseEnter={() => setHoveredSection("contact")}
-        onMouseLeave={() => setHoveredSection(null)}
-      >
-        <p style={{ margin: "5px 0", transition: "all 0.3s ease" }}>📧 Email: {formData.email}</p>
-        <p style={{ margin: "5px 0", transition: "all 0.3s ease" }}>📱 Phone: {formData.phone}</p>
-      </div>
+  // 2. Template: Elegant Minimalist
+  const renderMinimalTemplate = () => {
+    return (
+      <div className="template-elegant-minimal" style={containerStyle}>
+        {/* Centered Header */}
+        <div className="header">
+          {formData.photo && (
+            <img src={formData.photo} alt="Profile" className="header-photo" />
+          )}
+          <h3>{formData.name || "Your Name"}</h3>
+          <h5>{formData.position || "Your Job Title"}</h5>
+          <div className="contact-details">
+            {formData.email && <span>📧 {formData.email}</span>}
+            {formData.phone && <span>📱 {formData.phone}</span>}
+          </div>
+        </div>
 
-      <div style={sectionStyle("profile")} onMouseEnter={() => setHoveredSection("profile")} onMouseLeave={() => setHoveredSection(null)}>
-        <h4 style={{ margin: "15px 0 8px 0", color: "#013880ff", transition: "all 0.3s ease" }}>Profile</h4>
-        <p style={{ margin: "0", lineHeight: "1.6", transition: "all 0.3s ease" }}>{formData.profile}</p>
-      </div>
+        {/* Sections */}
+        {renderSection("Profile", formData.profile, "minimal")}
+        {renderSection("Education", formData.education, "minimal")}
+        
+        {formData.skills && (
+          <div className="section">
+            <h4>Skills</h4>
+            <p>{formData.skills.split(",").map(s => s.trim()).filter(Boolean).join("  •  ")}</p>
+          </div>
+        )}
 
-      <div style={sectionStyle("education")} onMouseEnter={() => setHoveredSection("education")} onMouseLeave={() => setHoveredSection(null)}>
-        <h4 style={{ margin: "15px 0 8px 0", color: "#013880ff", transition: "all 0.3s ease" }}>Education</h4>
-        <p style={{ margin: "0", lineHeight: "1.6", transition: "all 0.3s ease" }}>{formData.education}</p>
+        {renderSection("Experience", formData.experience, "minimal")}
+        {renderSection("Projects", formData.projects, "minimal")}
+        {renderSection("Certifications", formData.certifications, "minimal")}
       </div>
+    );
+  };
 
-      <div style={sectionStyle("skills")} onMouseEnter={() => setHoveredSection("skills")} onMouseLeave={() => setHoveredSection(null)}>
-        <h4 style={{ margin: "15px 0 8px 0", color: "#013880ff", transition: "all 0.3s ease" }}>Skills</h4>
-        <p style={{ margin: "0", lineHeight: "1.6", transition: "all 0.3s ease" }}>{formData.skills}</p>
-      </div>
+  // 3. Template: Creative Badges
+  const renderCreativeTemplate = () => {
+    return (
+      <div className="template-creative-badges" style={containerStyle}>
+        {/* Top Gradient Header */}
+        <div className="top-bar resume-accent-bg">
+          {formData.photo && (
+            <img src={formData.photo} alt="Profile" />
+          )}
+          <div>
+            <h3>{formData.name || "Your Name"}</h3>
+            <h5>{formData.position || "Your Job Title"}</h5>
+            <div className="contact-info">
+              {formData.email && <span>📧 {formData.email}</span>}
+              {formData.phone && <span>📱 {formData.phone}</span>}
+            </div>
+          </div>
+        </div>
 
-      <div style={sectionStyle("experience")} onMouseEnter={() => setHoveredSection("experience")} onMouseLeave={() => setHoveredSection(null)}>
-        <h4 style={{ margin: "15px 0 8px 0", color: "#013880ff", transition: "all 0.3s ease" }}>Experience</h4>
-        <p style={{ margin: "0", lineHeight: "1.6", transition: "all 0.3s ease" }}>{formData.experience}</p>
-      </div>
+        {/* Content Body */}
+        <div className="body-content">
+          {renderSection("Profile Summary", formData.profile, "creative")}
+          
+          {formData.skills && (
+            <div className="section">
+              <h4>Skills & Tech Stack</h4>
+              <div className="skills-badge-container">
+                {formData.skills.split(",").map((s, idx) => s.trim() && (
+                  <span key={idx} className="skill-badge">
+                    {s.trim()}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
 
-      <div style={sectionStyle("projects")} onMouseEnter={() => setHoveredSection("projects")} onMouseLeave={() => setHoveredSection(null)}>
-        <h4 style={{ margin: "15px 0 8px 0", color: "#013880ff", transition: "all 0.3s ease" }}>Projects</h4>
-        <p style={{ margin: "0", lineHeight: "1.6", transition: "all 0.3s ease" }}>{formData.projects}</p>
+          {renderSection("Professional Experience", formData.experience, "creative")}
+          {renderSection("Education History", formData.education, "creative")}
+          {renderSection("Featured Projects", formData.projects, "creative")}
+          {renderSection("Certifications", formData.certifications, "creative")}
+        </div>
       </div>
+    );
+  };
 
-      <div style={sectionStyle("certifications")} onMouseEnter={() => setHoveredSection("certifications")} onMouseLeave={() => setHoveredSection(null)}>
-        <h4 style={{ margin: "15px 0 8px 0", color: "#013880ff", transition: "all 0.3s ease" }}>Certifications</h4>
-        <p style={{ margin: "0", lineHeight: "1.6", transition: "all 0.3s ease" }}>{formData.certifications}</p>
+  // 4. Template: Classic Executive
+  const renderExecutiveTemplate = () => {
+    return (
+      <div className="template-classic-executive" style={containerStyle}>
+        {/* Header Block */}
+        <div className="header">
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div style={{ textAlign: "left" }}>
+              <h3>{formData.name || "Your Name"}</h3>
+              <h5>{formData.position || "Your Job Title"}</h5>
+            </div>
+            
+            {formData.photo && (
+              <img src={formData.photo} alt="Profile" className="header-photo" />
+            )}
+          </div>
+          
+          <div className="header-details">
+            {formData.email && <div className="contact-info">📧 {formData.email}</div>}
+            {formData.phone && <div className="contact-info">📱 {formData.phone}</div>}
+          </div>
+        </div>
+
+        {/* Sections */}
+        {renderSection("Summary", formData.profile, "executive")}
+        <hr />
+        {renderSection("Education", formData.education, "executive")}
+        <hr />
+        {formData.skills && (
+          <div className="section">
+            <h4>Core Competencies</h4>
+            <p style={{ fontStyle: "italic" }}>
+              {formData.skills.split(",").map(s => s.trim()).filter(Boolean).join(", ")}
+            </p>
+          </div>
+        )}
+        <hr />
+        {renderSection("Professional History", formData.experience, "executive")}
+        <hr />
+        {renderSection("Key Projects", formData.projects, "executive")}
+        <hr />
+        {renderSection("Certifications & Training", formData.certifications, "executive")}
       </div>
+    );
+  };
+
+  // Render the selected template layout
+  return (
+    <div id="resume" style={containerStyle}>
+      {selectedTemplate === "sidebar" && renderSidebarTemplate()}
+      {selectedTemplate === "minimal" && renderMinimalTemplate()}
+      {selectedTemplate === "creative" && renderCreativeTemplate()}
+      {selectedTemplate === "executive" && renderExecutiveTemplate()}
     </div>
   );
 }
