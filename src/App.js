@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState } from "react";
 import ResumeForm from "./components/ResumeForm";
 import ResumePreview from "./components/ResumePreview";
+import logo from "./components/logo.png";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
@@ -72,8 +73,13 @@ function App() {
       </div>
 
       <div className="container mt-4">
-        <h1 className="text-center mb-4">ResuMate</h1>
-        <h2 className="tag text-center mb-4">Online Resume Builder</h2>
+        <div className="brand-lockup mb-4">
+          <img className="brand-logo" src={logo} alt="ResuMate logo" />
+          <div className="brand-copy">
+            <h1 className="brand-name text-center mb-2">ResuMate</h1>
+            <h2 className="tag text-center mb-0">Online Resume Builder</h2>
+          </div>
+        </div>
 
         <div className="row justify-content-center">
           {/* Left Column: Editor Form */}
