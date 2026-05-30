@@ -1,70 +1,153 @@
-# Getting Started with Create React App
+# ResuMate
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A lightweight React app for building and previewing clean, printable resumes.
 
-## Available Scripts
+<!-- Badges -->
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Build status](https://img.shields.io/badge/build-dev-green)](#)
 
-In the project directory, you can run:
+Shortcuts
+- Live preview as you type
+- Export to PDF via browser Print
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<details>
+	<summary><strong>Interactive Quick Start (one-line)</strong></summary>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+	```bash
+	npm install
+	npm start  # opens http://localhost:3000
+	```
 
-### `npm test`
+</details>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Demo**
 
-### `npm run build`
+![demo placeholder](public/demo-placeholder.gif)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Why ResuMate?**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Fast form-driven resume authoring.
+- Live HTML preview and printable output.
+- Simple component structure for easy customization.
 
-### `npm run eject`
+**Features**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Form-based resume editor (`src/components/ResumeForm.js`).
+- Live preview (`src/components/ResumePreview.js`).
+- Client-side export via Print-to-PDF.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Getting started**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Clone the repo and install dependencies:
 
-## Learn More
+```bash
+git clone <your-fork-url>
+cd resumate
+npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Start the dev server:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm start
+```
 
-### Code Splitting
+Open http://localhost:3000 in your browser. The app supports hot reload.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+**Usage**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Open the editor and fill out the fields on the left.
+- Preview updates instantly on the right.
+- To save/export: use browser Print -> Save as PDF.
 
-### Making a Progressive Web App
+Helpful pointers:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Edit form layout in [src/components/ResumeForm.js](src/components/ResumeForm.js).
+- Customize preview markup/styles in [src/components/ResumePreview.js](src/components/ResumePreview.js).
+- Global styles are in [src/App.css](src/App.css) and [src/index.css](src/index.css).
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+**Interactive Tips**
 
-### Deployment
+- Focus a field and press `Ctrl+S` to trigger autosave (if enabled).
+- Use `Ctrl+P` to open Print dialog for a quick PDF export.
+- Use browser zoom level 100% when printing for best layout fidelity.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<details>
+	<summary><strong>Troubleshooting</strong></summary>
 
-### `npm run build` fails to minify
+	- If the dev server doesn't start, try removing `node_modules` and reinstalling.
+	- If styles look wrong, clear your browser cache or hard-reload the page.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+</details>
+
+---
+
+**Development notes**
+
+- Entry point: [src/index.js](src/index.js)
+- App container: [src/App.js](src/App.js)
+- Components: [src/components/ResumeForm.js](src/components/ResumeForm.js), [src/components/ResumePreview.js](src/components/ResumePreview.js)
+
+If you add new fields to the form, ensure the preview component maps those fields to the printed layout.
+
+---
+
+**Testing & Build**
+
+Run unit tests (if any):
+
+```bash
+npm test
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+---
+
+**Contributing**
+
+Contributions are welcome. Suggested workflow:
+
+1. Fork the repository.
+2. Create a feature branch: `git checkout -b feat/my-change`.
+3. Make changes, run the app locally and add tests if appropriate.
+4. Open a pull request with a clear description.
+
+Please follow the existing code style.
+
+---
+
+**License**
+
+This project is available under the MIT License. See the LICENSE file for details.
+
+---
+
+**Contact / Support**
+
+Open issues on GitHub for bugs or feature requests.
+
+---
+
+If you'd like, I can:
+
+- add a demo GIF to `public/demo-placeholder.gif` and wire it into the README,
+- add a small CLI to export JSON resumes, or
+- generate a sample resume JSON and screenshot to include here.
+
+---
+
