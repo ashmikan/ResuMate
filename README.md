@@ -1,4 +1,4 @@
-# ResuMate
+<h1 align="center">ResuMate..🖋️</h1>
 
 A lightweight React app for building and previewing clean, printable resumes.
 
@@ -21,12 +21,6 @@ Shortcuts
 	```
 
 </details>
-
-**Demo**
-
-![demo placeholder](public/demo-placeholder.gif)
-
----
 
 **Why ResuMate?**
 
@@ -131,23 +125,9 @@ Please follow the existing code style.
 
 ---
 
-**License**
+<h2 align="center">Thank You! 👩🏼‍💻 </h2>
 
-This project is available under the MIT License. See the LICENSE file for details.
-
----
-
-**Contact / Support**
-
-Open issues on GitHub for bugs or feature requests.
-
----
-
-If you'd like, I can:
-
-- add a demo GIF to `public/demo-placeholder.gif` and wire it into the README,
-- add a small CLI to export JSON resumes, or
-- generate a sample resume JSON and screenshot to include here.
-
----
-
+<div align="center">
+Credit: <a href="https://github.com/ashmikan">Ashmika Nathali </a>
+Last Edited on: 30/05/2026
+</div>
